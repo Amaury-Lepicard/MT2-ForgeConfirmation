@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>ForgeConfirmation</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <Version>0.1.0</Version>
+    <UserSecretsId>a1b2c3d4-5e6f-4a7b-8c9d-0e1f2a3b4c5d</UserSecretsId>
+    <PluginDeployDir>$(HOME)/mt2-plugins/ForgeConfirmation</PluginDeployDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="**\STUB" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Analyzers" Version="1.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+    <PackageReference Include="TrainworksReloaded.Base" Version="0.7.*" />
+    <PackageReference Include="Conductor" Version="0.4.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="json/**/*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="textures/**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="DeployPlugin" AfterTargets="Build">
+    <ItemGroup>
+      <PluginJsonFiles Include="$(ProjectDir)json\**\*.json" />
+      <PluginTextureFiles Include="$(ProjectDir)textures\**\*" />
+    </ItemGroup>
+    <MakeDir Directories="$(PluginDeployDir)" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(PluginDeployDir)" />
+    <Copy SourceFiles="@(PluginJsonFiles)" DestinationFolder="$(PluginDeployDir)/json/%(RecursiveDir)" />
+    <Copy SourceFiles="@(PluginTextureFiles)" DestinationFolder="$(PluginDeployDir)/textures/%(RecursiveDir)" />
+  </Target>
+</Project>
