@@ -40,13 +40,15 @@ jobs:
           if [[ "$GITHUB_REF" == refs/tags/* ]]; then
             TAG_NAME=${GITHUB_REF#refs/tags/}
             echo "VERSION=$TAG_NAME" >> $GITHUB_ENV
+            echo "TS_VERSION=$TAG_NAME" >> $GITHUB_ENV
           else
             echo "VERSION=${{ env.base_version }}-preview.${{ github.run_number }}" >> $GITHUB_ENV
+            echo "TS_VERSION=${{ env.base_version }}" >> $GITHUB_ENV
           fi
 
       - name: Set Thunderstore Package Version
         run: |
-          sed -i "s/^versionNumber = .*/versionNumber = \"${VERSION}\"/" thunderstore.toml
+          sed -i "s/^versionNumber = .*/versionNumber = \"${TS_VERSION}\"/" thunderstore.toml
 
       - name: Restore Dependencies
         run: dotnet restore
@@ -64,16 +66,16 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-bundle
-          path: ${{ env.mod_namespace }}-${{ env.mod_name }}-${{ github.ref_name }}.zip
+          path: ${{ env.mod_namespace }}-${{ env.mod_name }}-${{ env.TS_VERSION }}.zip
 
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ${{ env.mod_namespace }}-${{ env.mod_name }}-${{ github.ref_name }}.zip
+          files: ${{ env.mod_namespace }}-${{ env.mod_name }}-${{ env.TS_VERSION }}.zip
           prerelease: true
           generate_release_notes: true
 
       - name: Publish to Thunderstore
-        run: tcli publish --file "${{ env.mod_namespace }}-${{ env.mod_name }}-${{ github.ref_name }}.zip" --token ${{ secrets.TCLI_AUTH_TOKEN }}
+        run: tcli publish --file "${{ env.mod_namespace }}-${{ env.mod_name }}-${{ env.TS_VERSION }}.zip" --token ${{ secrets.TCLI_AUTH_TOKEN }}
         if: startsWith(github.ref, 'refs/tags/')
