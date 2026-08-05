@@ -400,5 +400,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-# Devcontainer secrets
-.devcontainer/.env
+# NuGet credentials for the GitHub Packages feed
+.env

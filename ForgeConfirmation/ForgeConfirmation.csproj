@@ -8,7 +8,7 @@
     <LangVersion>latest</LangVersion>
     <Version>0.1.0</Version>
     <UserSecretsId>a1b2c3d4-5e6f-4a7b-8c9d-0e1f2a3b4c5d</UserSecretsId>
-    <PluginDeployDir>$(HOME)/mt2-plugins/ForgeConfirmation</PluginDeployDir>
+    <PluginDeployDir>$(MSBuildProjectDirectory)/../../mt2-plugins/ForgeConfirmation</PluginDeployDir>
   </PropertyGroup>
 
   <ItemGroup>
