@@ -5,8 +5,8 @@ toggle, so cheap swarm units stop eating your Forge Points.
 
 The toggle now cycles **Off → On → Hybrid → Off**. Hybrid behaves exactly like
 On, except that playing a unit whose subtype is on the skip list spends no Forge
-Points. The Hybrid state is tinted orange and its tooltip lists the skipped
-subtypes.
+Points. The Hybrid state is marked with an orange **H** badge on the toggle and
+its tooltip lists the skipped subtypes.
 
 ## Configuration
 
@@ -14,6 +14,7 @@ subtypes.
 
 | Key | Default | Meaning |
 | --- | --- | --- |
+| `Hybrid.Enabled` | `true` | Whether the Hybrid state exists at all. When disabled, the toggle stays plain Off → On → Off. |
 | `Hybrid.SkippedSubtypes` | `Morsel, Imp, Whelp` | Comma-separated unit subtypes that don't consume Forge Points in Hybrid. Matched case-insensitively as a substring of both the subtype key and its localized name. |
 
 ## Install
