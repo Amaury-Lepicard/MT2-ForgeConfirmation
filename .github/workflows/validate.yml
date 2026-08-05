@@ -5,12 +5,12 @@ on:
     branches:
       - main
     paths:
-      - ForgeConfirmation/json/**
+      - ForgeSmartToggle/json/**
   pull_request:
     branches:
       - main
     paths:
-      - ForgeConfirmation/json/**
+      - ForgeSmartToggle/json/**
 
 jobs:
   validate:
@@ -24,4 +24,4 @@ jobs:
       run: pip install check-jsonschema
 
     - name: Validate JSON Schema
-      run: check-jsonschema ForgeConfirmation/json/**/*.json --schemafile=https://raw.githubusercontent.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/refs/heads/main/schemas/base.json
+      run: check-jsonschema ForgeSmartToggle/json/**/*.json --schemafile=https://raw.githubusercontent.com/Monster-Train-2-Modding-Group/Trainworks-Reloaded/refs/heads/main/schemas/base.json

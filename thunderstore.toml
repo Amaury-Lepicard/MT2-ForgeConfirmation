@@ -3,9 +3,9 @@ schemaVersion = "0.0.1"
 
 [package]
 namespace = "SpecialCircumstances"
-name = "ForgeConfirmation"
+name = "ForgeSmartToggle"
 versionNumber = "0.1.0"
-description = "Short description of your mod"
+description = "Adds a third Hybrid state to the forge toggle that skips Morsels, Imps and Whelps"
 websiteUrl = "https://thunderstore.io"
 containsNsfwContent = false
 

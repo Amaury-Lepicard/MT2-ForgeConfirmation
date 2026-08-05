@@ -7,7 +7,7 @@
 version: 2
 updates:
   - package-ecosystem: "nuget"
-    directory: "/ForgeConfirmation"
+    directory: "/ForgeSmartToggle"
     schedule:
       interval: "weekly"
     registries:

@@ -14,8 +14,8 @@ permissions:
 env:
   base_version: '0.1.0'
   mod_namespace: 'SpecialCircumstances'
-  mod_name: 'ForgeConfirmation'
-  release_name: 'ForgeConfirmation'
+  mod_name: 'ForgeSmartToggle'
+  release_name: 'ForgeSmartToggle'
 
 jobs:
   build:
