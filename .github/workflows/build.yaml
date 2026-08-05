@@ -16,6 +16,8 @@ env:
   mod_namespace: 'SpecialCircumstances'
   mod_name: 'ForgeSmartToggle'
   release_name: 'ForgeSmartToggle'
+  GITHUB_USER: ${{ github.actor }}
+  GH_AUTH_TOKEN: ${{ secrets.GH_AUTH_TOKEN }}
 
 jobs:
   build:
@@ -45,10 +47,6 @@ jobs:
       - name: Set Thunderstore Package Version
         run: |
           sed -i "s/^versionNumber = .*/versionNumber = \"${VERSION}\"/" thunderstore.toml
-
-      - name: Setup NuGet Credentials
-        run: |
-          dotnet nuget update source monster-train-packages -u USERNAME -p ${{ secrets.GH_AUTH_TOKEN }} --store-password-in-clear-text
 
       - name: Restore Dependencies
         run: dotnet restore
