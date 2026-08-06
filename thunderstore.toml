@@ -5,8 +5,8 @@ schemaVersion = "0.0.1"
 namespace = "SpecialCircumstances"
 name = "ForgeSmartToggle"
 versionNumber = "0.1.0"
-description = "Adds a third Hybrid state to the forge toggle that skips Morsels, Imps and Whelps"
-websiteUrl = "https://thunderstore.io"
+description = "Adds a third Hybrid state to the in-battle forge toggle: forges as normal, but spends no Forge Points on cheap swarm units. Skips Morsels, Imps and Whelps by default, and the list is configurable."
+websiteUrl = "https://github.com/Amaury-Lepicard/MT2-ForgeConfirmation"
 containsNsfwContent = false
 
 [package.dependencies]

@@ -5,8 +5,9 @@ toggle, so cheap swarm units stop eating your Forge Points.
 
 The toggle now cycles **Off → On → Hybrid → Off**. Hybrid behaves exactly like
 On, except that playing a unit whose subtype is on the skip list spends no Forge
-Points. The Hybrid state is marked with an orange **H** badge on the toggle and
-its tooltip lists the skipped subtypes.
+Points. Hybrid is marked by tinting the toggle orange and pinning an orange
+**H** badge to its corner; the tooltip gains a "(Hybrid)" suffix and lists the
+subtypes being skipped.
 
 ## Configuration
 
@@ -15,7 +16,7 @@ its tooltip lists the skipped subtypes.
 | Key | Default | Meaning |
 | --- | --- | --- |
 | `Hybrid.Enabled` | `true` | Whether the Hybrid state exists at all. When disabled, the toggle stays plain Off → On → Off. |
-| `Hybrid.SkippedSubtypes` | `Morsel, Imp, Whelp` | Comma-separated unit subtypes that don't consume Forge Points in Hybrid. Matched case-insensitively as a substring of both the subtype key and its localized name. |
+| `Hybrid.SkippedSubtypes` | `Morsel, Imp, Whelp` | Comma-separated unit subtypes that don't consume Forge Points in Hybrid. Matched case-insensitively as a substring of both the subtype key and its localized name. Leave it empty and Hybrid skips nothing (the tooltip says so). |
 
 ## Install
 
@@ -30,6 +31,10 @@ automatically:
 Manual install: drop `ForgeSmartToggle.dll` into `BepInEx/plugins/`.
 
 ## Notes
+
+Only units you play yourself are exempted, and only by the subtypes of the
+character they spawn — units summoned by a card's effects, and spell cards, are
+unaffected either way.
 
 The third state lives entirely mod-side — the game's own forge toggle stays
 `true` while in Hybrid, so save data and replays are unaffected. Anything that
