@@ -402,3 +402,7 @@ FodyWeavers.xsd
 
 # NuGet credentials for the GitHub Packages feed
 .env
+
+# Thunderstore packaging output (`tcli build` writes the zip to the repo root)
+/plugin_build/
+/SpecialCircumstances-*.zip

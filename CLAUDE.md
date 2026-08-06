@@ -35,9 +35,13 @@ targets `../../mt2-plugins/...`.
 ## Build
 
 ```sh
-set -a; . ./.env; set +a   # exports GITHUB_USER / GH_AUTH_TOKEN
+set -a; . ./.env; set +a   # -> ~/.config/mt2mods/env
 dotnet build
 ```
+
+`.env` holds no values itself — it sources `~/.config/mt2mods/env` (mode
+600), one shared file defining `GITHUB_USER`, `GH_AUTH_TOKEN` and
+`TCLI_AUTH_TOKEN` for every MT2 mod repo. See `.env.example`.
 
 `nuget.config` pulls `TrainworksReloaded.Base` and `Conductor` from a private
 GitHub Packages feed, expanding `%GITHUB_USER%`/`%GH_AUTH_TOKEN%` from the
